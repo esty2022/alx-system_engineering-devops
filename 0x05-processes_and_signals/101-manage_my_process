@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script is displaying "Holberton School" 10 times
+# This script is displaying "Best School" 10 times
 if [ "$#" -ne 1 ]
 then
     echo "Usage: manage_my_process {start|stop|restart}"
@@ -32,4 +32,4 @@ then
     echo "$!" > /var/run/my_process.pid
     echo "manage_my_process restarted"
 
-fi
+fii

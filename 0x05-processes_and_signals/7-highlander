@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
-# This script displays
-# to infinity and beyond indefinitely
-# With a sleep 2 in between each iteration
-# I am invincible!!! when receiving a SIGTERM signal
+# This script is displaying "Best School" 10 times
+trap interrup SIGTERM
 
-trap 'echo "I am invincible!!!"' 15
-while true; do
-    echo "to infinity and beyond"
+interrup()
+{
+    echo "I am invincible!!!"
+}
+
+while true
+do
+    echo "To infinity and beyond"
     sleep 2
 done
