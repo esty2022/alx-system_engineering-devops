@@ -16,7 +16,7 @@ path_to_ssh_key=$4
 
 # disbling strict host key checking
 
-scp -o "StrictHostKeyChecking=no" -i "$path_to_ssh_key"  "$username@ip:~/"
+scp -o "StrictHostKeyChecking=no" -i "$path_to_ssh_key"  "$username@$ip:~/"
 
 # checking if the transfer was successful
 if [ $? -eq 0]
