@@ -7,6 +7,6 @@ sudo apt install nginx -y
 sudo ufw allow 22
 sudo ufw allow 80
 sudo ufw enable
-echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
+echo "Hello World!" | sudo tee /var/www/html/index.html
 sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://github.com/esty2022 permanent;' /etc/nginx/sites-available/default
 sudo service nginx restart
