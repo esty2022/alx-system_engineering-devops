@@ -1,15 +1,22 @@
 #!/usr/bin/env bash
-# Configure HAproxy so that it send traffic to web-01 and web-02                                                                                                                            
-sudo apt-get update -y
-sudo apt-get install haproxy=1.6.\* -y
-sudo chown -R $USER:$USER /etc/haproxy/
-echo "frontend my_frontend
+# configures a new HAproxy as a load balancer
+
+# Install HAproxy on a server
+sudo apt-get -y update
+sudo apt-get -y install haproxy 
+
+# Configure haproxy configuration file to distribute requests using a roundrobin algorithm
+echo "
+frontend abiolafashblog.tech
         bind *:80
 	mode http
-        stats uri /haproxy?stats
-        default_backend my_backend" >> /etc/haproxy/haproxy.cfg
-echo "backend my_backend
+        default_backend abiolafash_backend
+
+backend abiolafash_backend
         balance roundrobin
-        server 904-web-01 104.196.40.220:80 check
-        server 904-web-02 35.229.44.99:80 check" >> /etc/haproxy/haproxy.cfg
+        server 220204-web-01 100.25.141.97:80 check
+        server 220204-web-02 54.175.255.86:80 check
+" >> /etc/haproxy/haproxy.cfg
+
+# Restart HAproxy service
 sudo service haproxy start
